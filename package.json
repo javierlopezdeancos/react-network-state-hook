@@ -1,0 +1,95 @@
+{
+  "name": "react-network-state-hook",
+  "version": "0.1.0",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "files": [
+    "/lib"
+  ],
+  "engines": {
+    "node": ">=16.8.0",
+    "npm": ">=7.24.0"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "format": "prettier --write 'src/**/*.{ts,tsx,scss,css,json}'",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --color --fix",
+    "test": "jest",
+    "test:coverage": "jest --coverage && coverage-shield && npm run build:coverage:shield",
+    "test:watch": "jest --watch",
+    "prepare": "husky install"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "(/__mocks__/.*|\\.(mock))\\.(ts|tsx|js)$"
+    ],
+    "collectCoverageFrom": [
+      "src/*.{ts,tsx}"
+    ],
+    "testEnvironment": "jsdom",
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.ts"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javierlopezdeancos/react-network-state-hook.git"
+  },
+  "keywords": [
+    "typescript",
+    "state machine",
+    "react"
+  ],
+  "author": "Javier Lopez de Ancos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/javierlopezdeancos/react-network-state-hook/issues"
+  },
+  "homepage": "https://github.com/javierlopezdeancos/react-network-state-hook#readme",
+  "dependencies": {
+    "erre-ele": "^0.2.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "@types/jest": "^27.0.2",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "@types/testing-library__jest-dom": "^5.14.1",
+    "@typescript-eslint/eslint-plugin": "4.31.2",
+    "@typescript-eslint/parser": "4.31.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-import-resolver-typescript": "2.4.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "husky": "~7.0.4",
+    "jest": "^27.2.2",
+    "jest-config": "^27.2.2",
+    "jest-coverage-shield": "^1.1.2",
+    "prettier": "2.2.1",
+    "prettier-eslint": "12.0.0",
+    "prettier-eslint-cli": "5.0.1",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.2.3"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
+  }
+}
