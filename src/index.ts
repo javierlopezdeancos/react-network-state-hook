@@ -1,21 +1,21 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 export type UseNetworkStateReturn = {
-  data: unknown,
+  data: unknown;
   meta: {
-    isLoading: boolean,
-    isError: boolean,
-    errorMessage: string,
-  },
-  signal: AbortSignal,
+    isLoading: boolean;
+    isError: boolean;
+    errorMessage: string;
+  };
+  signal: AbortSignal;
   actions: {
-    startRequest: () => void,
-    endRequest: () => void,
-    abortRequest: () => void,
-    setErrorState: (message: string) => void,
-    setRequestData: (data: unknown) => void,
-  }
-}
+    startRequest: () => void;
+    endRequest: () => void;
+    abortRequest: () => void;
+    setErrorState: (message: string) => void;
+    setRequestData: (data: unknown) => void;
+  };
+};
 
 export default function useNetworkState(): UseNetworkStateReturn {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -43,5 +43,5 @@ export default function useNetworkState(): UseNetworkStateReturn {
       },
       setRequestData: (data: unknown) => setData(data),
     },
-  }
+  };
 }
