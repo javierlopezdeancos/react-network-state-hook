@@ -1,17 +1,21 @@
-export declare type UseNetworkStateReturn = {
-    data: unknown;
+export declare type UseNetworkStateReturn<D> = {
+    data: D | undefined;
     meta: {
-        isLoading: boolean;
-        isError: boolean;
+        loading: boolean;
+        error: boolean;
         errorMessage: string;
     };
     signal: AbortSignal;
     actions: {
-        startRequest: () => void;
-        endRequest: () => void;
-        abortRequest: () => void;
-        setErrorState: (message: string) => void;
-        setRequestData: (data: unknown) => void;
+        start: () => void;
+        end: () => void;
+        abort: () => void;
+        resetError: () => void;
+        setError: (message?: string) => void;
+        setData: (data: D) => void;
+        setLoading: (laoding: boolean) => void;
+        resetSignal: () => void;
+        setController: (controller: AbortController) => void;
     };
 };
-export default function useNetworkState(): UseNetworkStateReturn;
+export default function useNetworkState<D = unknown>(): UseNetworkStateReturn<D>;
