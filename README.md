@@ -1,6 +1,6 @@
 # React Network State Hook
 
-A react hook to handle your network requests state.
+A react machine state hook to handle your network requests.
 
 ## Activity
 
@@ -10,6 +10,92 @@ A react hook to handle your network requests state.
 ![GitHub all releases](https://img.shields.io/github/downloads/javierlopezdeancos/react-network-state-hook/total)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/javierlopezdeancos/react-network-state-hook/publish-react-network-state-hook-in-npm-on-release)
 ![npm](https://img.shields.io/npm/v/react-network-state-hook)
+
+## data
+
+Data that returns the network call.
+
+### Generic
+
+Data could be defined with a generic when we define our hook to be used:
+
+```jsx
+ const { data, meta, signal, actions } = useNetworkState<string>();
+```
+
+## meta
+
+### loading
+
+The hook will return a loading state.
+
+### error
+
+The hook will return an error state.
+
+### errorMessage
+
+The hook will return an error message.
+
+## Actions
+
+### start
+
+Turns the loading state to true.
+
+### end
+
+Turns the loading state to false.
+
+### abort
+
+Turns the loading state to false and abort the network call.
+
+### resetError
+
+Turns the error state to false and initialize error message to ''.
+
+### setError
+
+Turns the loading state to false, the error state to true and sets the error message.
+
+### setData
+
+Set data that should return the hook.
+
+### setLoading
+
+Set the loading state.
+
+### resetSignal
+
+Reset the abort controller to a new one.
+
+This action is important when you want to abort the network call.
+
+```jsx
+actions.start();
+
+try {
+  const response = await fetch(url, { signal }) as any;
+  const d = await response.json();
+
+  actions.setData(d);
+} catch (error: any) {
+  if (error as DOMException) {
+    actions.resetSignal();
+    return;
+  }
+
+  actions.setError();
+} finally {
+  actions.end();
+}
+```
+
+### setController
+
+Set the abort controller.
 
 ## Use example
 
