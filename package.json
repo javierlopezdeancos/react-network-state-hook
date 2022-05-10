@@ -1,6 +1,6 @@
 {
   "name": "react-network-state-hook",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
@@ -23,7 +23,6 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage && coverage-shield && npm run build:coverage:shield",
-    "test:watch": "jest --watch",
     "prepare": "husky install"
   },
   "jest": {
