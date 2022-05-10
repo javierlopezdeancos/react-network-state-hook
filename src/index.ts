@@ -1,47 +1,65 @@
 import { useState } from 'react';
 
-export type UseNetworkStateReturn = {
-  data: unknown;
+export type UseNetworkStateReturn<D> = {
+  data: D | undefined;
   meta: {
-    isLoading: boolean;
-    isError: boolean;
+    loading: boolean;
+    error: boolean;
     errorMessage: string;
   };
   signal: AbortSignal;
   actions: {
-    startRequest: () => void;
-    endRequest: () => void;
-    abortRequest: () => void;
-    setErrorState: (message: string) => void;
-    setRequestData: (data: unknown) => void;
+    start: () => void;
+    end: () => void;
+    abort: () => void;
+    resetError: () => void;
+    setError: (message?: string) => void;
+    setData: (data: D) => void;
+    setLoading: (laoding: boolean) => void;
+    resetSignal: () => void;
+    setController: (controller: AbortController) => void;
   };
 };
 
-export default function useNetworkState(): UseNetworkStateReturn {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
+export default function useNetworkState<D = unknown>(): UseNetworkStateReturn<D> {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [data, setData] = useState<unknown>({});
+  const [data, setData] = useState<D>();
+  const [controller, setController] = useState<AbortController>(new AbortController());
 
-  const controller = new AbortController();
+  const resetSignal = () => {
+    setController(new AbortController());
+  };
 
   return {
     data,
     meta: {
-      isLoading,
-      isError,
+      loading,
+      error,
       errorMessage,
     },
     signal: controller.signal,
     actions: {
-      startRequest: () => setIsLoading(true),
-      endRequest: () => setIsLoading(false),
-      abortRequest: () => controller.abort(),
-      setErrorState: (message = '') => {
-        setIsError(true);
+      start: () => setLoading(true),
+      end: () => setLoading(false),
+      abort: () => {
+        controller.abort();
+        setLoading(false);
+      },
+      resetError: () => {
+        setError(false);
+        setErrorMessage('');
+      },
+      setError: (message = '') => {
+        setLoading(false);
+        setError(true);
         setErrorMessage(message);
       },
-      setRequestData: (data: unknown) => setData(data),
+      setLoading: (loading: boolean) => setLoading(loading),
+      setData: (data: D) => setData(data),
+      resetSignal: () => resetSignal(),
+      setController: (controller: AbortController) => setController(controller),
     },
   };
 }
