@@ -1,4 +1,5 @@
 /** @jest-environment jsdom */
+import React from 'react';
 import { screen, fireEvent, render } from '@testing-library/react';
 import useNetworkState from './index';
 import '@testing-library/jest-dom';
