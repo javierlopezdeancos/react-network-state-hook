@@ -1,4 +1,5 @@
 /** @jest-environment jsdom */
+// @ts-ignore: Unreachable code error
 import React from 'react';
 import { screen, fireEvent, render } from '@testing-library/react';
 import useNetworkState from './index';
