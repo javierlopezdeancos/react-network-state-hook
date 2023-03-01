@@ -10,7 +10,8 @@ A react machine state hook to handle your network requests.
 [![GitHub all releases](https://img.shields.io/github/downloads/javierlopezdeancos/react-network-state-hook/total)](https://github.com/javierlopezdeancos/react-network-state-hook/releases)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/javierlopezdeancos/react-network-state-hook/publish-npm.yml)
 ![contributors](https://img.shields.io/github/contributors/javierlopezdeancos/react-network-state-hook)
-![npm](https://img.shields.io/npm/v/react-network-state-hook)
+![npm version](https://img.shields.io/npm/v/react-network-state-hook)
+![bundle size](https://img.shields.io/bundlephobia/min/react-network-state-hook)
 
 ## data
 
