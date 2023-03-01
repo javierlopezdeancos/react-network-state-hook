@@ -1,4 +1,4 @@
-export declare type UseNetworkStateReturn<D> = {
+export type UseNetworkStateReturn<D> = {
     data: D | undefined;
     meta: {
         loading: boolean;
