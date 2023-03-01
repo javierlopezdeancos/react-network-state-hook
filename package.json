@@ -19,13 +19,14 @@
     "minimize:esm": "npx uglifyjs ./lib/esm/index.js --output ./lib/esm/index.min.js",
     "minimize:cjs": "npx uglifyjs ./lib/cjs/index.js --output ./lib/cjs/index.min.js",
     "build:coverage:shield": "./node_modules/jest-coverage-shield/lib/cli.js -d ./coverage",
-    "format": "prettier --write 'src/**/*.{ts,tsx,scss,css,json}'",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
-    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --color --fix",
+    "format": "npx prettier --write 'src/**/*.{ts,tsx}'",
+    "lint": "npx eslint --ext .js,.jsx,.ts,.tsx src --color",
+    "lint:fix": "npx eslint --ext .js,.jsx,.ts,.tsx src --color --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage && coverage-shield && npm run build:coverage:shield",
-    "prepare": "husky install"
+    "prepare": "npx husky install && npx husky set .husky/pre-commit 'npx lint-staged' && git add .husky/pre-commit",
+    "uninstall-husky": "npm uninstall husky --no-save && git config --unset core.hooksPath && npx rimraf .husky"
   },
   "jest": {
     "coveragePathIgnorePatterns": [
@@ -80,6 +81,7 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "latest",
     "husky": "8.0.1",
+    "lint-staged": "^13.1.0",
     "jest": "^28.0.0",
     "jest-config": "^28.1.0",
     "jest-coverage-shield": "^1.1.2",
