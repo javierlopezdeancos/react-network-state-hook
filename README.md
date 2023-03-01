@@ -5,10 +5,11 @@ A react machine state hook to handle your network requests.
 ## Activity
 
 [![License](https://img.shields.io/github/license/javierlopezdeancos/react-network-state-hook?style=flat-square)](LICENSE)
-![Coverage](./shields/coverage.svg)]
-![GitHub issues](https://img.shields.io/github/issues-raw/javierlopezdeancos/react-network-state-hook?style=flat)
-![GitHub all releases](https://img.shields.io/github/downloads/javierlopezdeancos/react-network-state-hook/total)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/javierlopezdeancos/react-network-state-hook/publish-react-network-state-hook-in-npm-on-release)
+![Coverage](./shields/coverage.svg)
+[![GitHub issues](https://img.shields.io/github/issues-raw/javierlopezdeancos/react-network-state-hook?style=flat)](https://github.com/javierlopezdeancos/react-network-state-hook/issues)
+[![GitHub all releases](https://img.shields.io/github/downloads/javierlopezdeancos/react-network-state-hook/total)](https://github.com/javierlopezdeancos/react-network-state-hook/releases)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/javierlopezdeancos/react-network-state-hook/publish-npm.yml)
+![contributors](https://img.shields.io/github/contributors/javierlopezdeancos/react-network-state-hook)
 ![npm](https://img.shields.io/npm/v/react-network-state-hook)
 
 ## data
